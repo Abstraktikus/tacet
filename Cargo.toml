@@ -1,0 +1,17 @@
+[package]
+name = "tacet"
+version = "0.1.0"
+edition = "2021"
+authors = ["Martin Nafzger"]
+license = "MIT"
+description = "An empty VST3/CLAP instrument that does nothing — a minimal-footprint placeholder for unused GigPerformer synth slots."
+repository = "https://github.com/Abstraktikus/tacet"
+
+[workspace]
+members = ["xtask"]
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+nih_plug = { git = "https://github.com/robbert-vdh/nih-plug.git" }
