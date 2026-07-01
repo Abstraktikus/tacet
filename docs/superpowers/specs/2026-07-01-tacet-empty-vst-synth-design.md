@@ -34,6 +34,8 @@ valid.
 - **Repo:** Standalone repository `C:\dev\tacet`, its own git history, published to
   GitHub under `Abstraktikus/tacet`. All code, UI strings, and GitHub content in
   English.
+- **Vendor / brand:** `Kapellmeister` — the manufacturer string shown in the host,
+  chosen so Tacet and the planned future MIDI plugin group under one brand.
 
 ## Plugin Declaration (the core requirement)
 
@@ -98,6 +100,7 @@ establishes that scaffold as a minimal "hello world".
 
 ## Notes / Open Items for Implementation
 
+- Vendor/brand is `Kapellmeister`; plugin name is `Tacet`.
 - Generate and record the stable VST3 class ID and CLAP ID during scaffolding.
 - Decide the exact silence strategy (explicit zero-fill vs. relying on host-cleared
   buffers) — zero-fill is the safe default.
