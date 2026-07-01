@@ -250,8 +250,10 @@ mod tests {
     }
 
     #[test]
-    fn vst3_class_id_is_16_bytes() {
-        assert_eq!(Tacet::VST3_CLASS_ID.len(), 16);
+    fn vst3_class_id_is_frozen() {
+        // The class ID must never change once released, or hosts treat an
+        // updated Tacet as a different plugin and drop existing references.
+        assert_eq!(&Tacet::VST3_CLASS_ID, b"KapellmstrTacet1");
     }
 }
 ```
