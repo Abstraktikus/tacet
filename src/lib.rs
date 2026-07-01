@@ -81,7 +81,7 @@ nih_export_vst3!(Tacet);
 /// Overwrite every sample in every channel with silence (0.0).
 ///
 /// Pure and allocation-free so it is safe to call from the audio thread.
-pub fn write_silence(channels: &mut [&mut [f32]]) {
+pub(crate) fn write_silence(channels: &mut [&mut [f32]]) {
     for channel in channels {
         for sample in channel.iter_mut() {
             *sample = 0.0;
