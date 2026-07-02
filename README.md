@@ -1,7 +1,7 @@
 # Tacet
 
-> **Status: pre-alpha.** It builds, loads, and is silent, but has not yet been
-> validated in a live GigPerformer rig.
+> **Status: v0.1.0.** Verified in a live GigPerformer 5 rig — loads as an
+> instrument, accepts MIDI, and is silent. Early release; no installer yet.
 
 An empty VST3/CLAP **instrument** that does exactly nothing: it declares itself as
 a synthesizer, accepts MIDI input, and outputs silence. Its purpose is to fill
@@ -39,16 +39,34 @@ cargo xtask bundle tacet --release --target x86_64-pc-windows-msvc
 On a native ARM64 host, use `--target aarch64-pc-windows-msvc` instead (or omit
 `--target` to build for the native toolchain).
 
-## Deploy (Windows)
+## Install (Windows)
+
+A VST3 is a **bundle folder** (`Tacet.vst3`), not a single file, and needs **no
+installer** — you just place the bundle where your host scans for plugins, then
+rescan. Get `Tacet.vst3` from a
+[release](https://github.com/Abstraktikus/tacet/releases) (unzip it) or by building
+it (see above). The bundle ships both x64 and ARM64 slices; the host picks its own.
+
+### Option A — no admin rights (recommended for GigPerformer)
+
+You never touch `Program Files`, so no elevation is needed:
+
+1. Put the `Tacet.vst3` folder anywhere you can write, e.g.
+   `%USERPROFILE%\...\GigPerformer\Tacet\Tacet.vst3`.
+2. In GigPerformer, add that folder as an extra VST3 scan path
+   (*Options → General → VST plug-in paths / folders*), then **Rescan** plug-ins.
+3. Tacet appears under vendor **Kapellmeister** as an Instrument/Synth.
+
+### Option B — system-wide (needs admin)
 
 ```powershell
 # elevated PowerShell (writing to Program Files needs admin)
 .\deploy.ps1
 ```
 
-Builds x64 and copies `Tacet.vst3` into `C:\Program Files\Common Files\VST3` (the
-folder GigPerformer scans). Override with `-Target` / `-VstDir` for a different
-architecture or a user-writable scan folder.
+Builds x64 and copies `Tacet.vst3` into `C:\Program Files\Common Files\VST3`, the
+folder GigPerformer scans by default. Override with `-Target` / `-VstDir` for a
+different architecture or scan folder.
 
 ## Test
 
