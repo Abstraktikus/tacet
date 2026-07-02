@@ -26,6 +26,14 @@ GigPerformer — and shares its `Kapellmeister` vendor brand with the planned fu
 MIDI-processing plugin, which will reuse this same [`nih-plug`](https://github.com/robbert-vdh/nih-plug)
 scaffold.
 
+## Related projects
+
+- **[GigPerformer](https://www.gigperformer.com/)** — the host Tacet is built for.
+- **[Kapellmeister](https://github.com/Abstraktikus/kapellmeister)** — on-stage
+  companion display for a GigPerformer rig (chord sheets, song/part status, timeline).
+- **[GigPerformer Global Rackspace script](https://github.com/Abstraktikus/GigPerformer)** —
+  the OSC-streaming GPScript that feeds Kapellmeister.
+
 ## Build
 
 Requires the Rust toolchain (MSVC). Build for the **host's architecture** — a VST3
